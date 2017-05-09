@@ -1,3 +1,11 @@
+// Implement a program that prints out a double half-pyramid of a specified height, per the below.
+// $ ./mario
+// Height: 4
+//   #  #
+//   ##  ##
+//  ###  ###
+// ####  ####
+
 #include <cs50.h>
 #include <stdio.h>
 #include <string.h>
