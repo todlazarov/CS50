@@ -14,6 +14,7 @@ int main(void)
 {
     int height;
     
+    // Check the height input according to spec
     while(true) {
         printf("How tall would you like your half pyramids to be? \n");
         height = get_int();
@@ -28,18 +29,23 @@ int main(void)
         int x = 0;
         int y = 0;
         
+        // Pring spaces
         for (int j = 1; j < height - i; j++)    
         {
             printf(" ");
         }
         
+        // Print the first half pyramid
         do {
             printf("#");
             x++;
         } while (x < i + 1);
         
+        // Print spaces
         printf("  ");
         
+        
+        // Print the second half pyramid
         do {
             printf("#");
             y++;
