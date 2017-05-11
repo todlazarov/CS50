@@ -17,6 +17,8 @@ int main(void)
 {
     long long cc_num = 1;
    
+   
+    // Main loop, asks for CC number until a working one is given.
     while (true)
     {
         printf ("Number: ");
