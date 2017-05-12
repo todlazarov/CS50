@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+int calculate_shift (int shift_key);
+
 int main(int argc, string argv[])
 {
     // Check to ensure there are only 2 arguments (the name of the file and the shift)
@@ -18,7 +20,7 @@ int main(int argc, string argv[])
     {
         if (!isalpha(argv[1][j]))
         {
-            printf ("Usage: ./vigenere k");
+            printf ("Usage: ./vigenere k\n");
             return 1;
         }
     }
@@ -27,7 +29,6 @@ int main(int argc, string argv[])
     string shift_word = argv[1];
     char shift_key;
     int len = strlen(argv[1]);
-    int k = 0; // The shift number forward
     int i = 0; // The counter for the shift word iteration
     int l = 0; // The counter for the total input p iteration
     
@@ -48,14 +49,7 @@ int main(int argc, string argv[])
             if (islower(p[l]))
             {
                 shift_key = shift_word[i % len];
-                if (islower(shift_key))
-                {
-                    k = shift_key - 97;
-                }
-                else{
-                    k = shift_key - 65;
-                }
-                printf ("%c", 'a' + (p[l] + k - 'a') % 26);
+                printf ("%c", 'a' + (p[l] + calculate_shift(shift_key) - 'a') % 26);
                 i++;
             } 
             
@@ -63,14 +57,8 @@ int main(int argc, string argv[])
             if (isupper(p[l]))
             {
                 shift_key = shift_word[i % len];
-                if (islower(shift_key))
-                {
-                    k = shift_key - 97;
-                }
-                else{
-                    k = shift_key - 65;
-                }
-                printf ("%c", 'A' + (p[l] + k - 'A') % 26);
+                
+                printf ("%c", 'A' + (p[l] + calculate_shift(shift_key) - 'A') % 26);
                 i++;
             }
         } 
@@ -82,6 +70,7 @@ int main(int argc, string argv[])
         
         l++;
         
+        // Check if the end of the p string is reached
         if (l >= p_len)
         {
             printf ("\n");
@@ -90,3 +79,18 @@ int main(int argc, string argv[])
         }
     }
 }
+
+int calculate_shift (int shift_key)
+{
+    int k = 0;
+    if (islower(shift_key))
+    {
+        k = shift_key - 97;
+    }
+    else
+    {
+        k = shift_key - 65;
+    }
+    return k;
+}
+
