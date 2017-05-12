@@ -23,13 +23,13 @@ int main(int argc, string argv[])
         }
     }
     
+    // Declare variables
     string shift_word = argv[1];
     char shift_key;
     int len = strlen(argv[1]);
-    int k = 0;
-    int i = 0;
-    int l = 0;
-    //int o = 0;
+    int k = 0; // The shift number forward
+    int i = 0; // The counter for the shift word iteration
+    int l = 0; // The counter for the total input p iteration
     
     // Ask user and store the plain text
     printf ("plaintext: ");
